@@ -173,11 +173,11 @@ lazy val lawsJVM    = laws.jvm.settings(dottySettings)
 lazy val lawsJS     = laws.js
 // lazy val lawsNative = laws.native
 
-lazy val dottyVersion = dottyLatestNightlyBuild.get
+lazy val dottyVersion = "0.11.0-bin-20181008-045f7f3-NIGHTLY"
 lazy val dottySettings = List(
   scalaVersion := dottyVersion,
   libraryDependencies := libraryDependencies.value.map(_.withDottyCompat(scalaVersion.value)),
-  scalacOptions := List()
+  scalacOptions := List("-language:Scala2,implicitConversions")
 )
 
 TaskKey[Unit]("dottyCompile") := {
